@@ -19,6 +19,10 @@ public class MyStringUtils {
         return StringUtils.repeat("*", Constants.TITLE_BOX_WIDTH);
     }
 
+    public static String dash() {
+        return StringUtils.repeat("-", Constants.TITLE_BOX_WIDTH);
+    }
+
 
     public static String centerTitleWith$(String title, int size, String padStr) {
 
