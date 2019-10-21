@@ -74,6 +74,10 @@ ehthumbs_vista.db
 *.lnk
 
 # Editors
+.classpath
+.factorypath
+.project
 .idea/
+.settings/
 target/
 output/
