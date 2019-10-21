@@ -8,8 +8,8 @@ import org.testng.Assert;
 import trang.bui.selenium.common.Constants;
 
 public class BasePage {
-    private WebDriver driver;
-    private WebDriverWait wait;
+    protected WebDriver driver;
+    protected WebDriverWait wait;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;

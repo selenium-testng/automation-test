@@ -16,6 +16,7 @@ import org.openqa.selenium.safari.SafariDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import trang.bui.selenium.common.Constants;
+import trang.bui.selenium.common.Log;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,16 +26,20 @@ public class BaseTest {
     public static WebDriver driver;
 
     @BeforeClass
-    public void setup() {
+    public void beforeClass() {
         setupDriver();
+        Log.configure();
+        Log.startTestCase(this.getClass().getSimpleName(), System.getProperty("os.name"), Constants.BROWSER);
     }
 
     @AfterClass
-    public void teardown() {
+    public void afterClass() {
+        Log.endTestCase();
         driver.quit();
     }
 
-    private void setupDriver() {
+    public void setupDriver() {
+        Log.info("Setup Browser driver");
         switch (Constants.BROWSER.toLowerCase()) {
             case "chrome":
                 WebDriverManager.chromedriver().setup();
