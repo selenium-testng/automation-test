@@ -6,6 +6,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import trang.bui.selenium.common.Constants;
+import trang.bui.selenium.common.Log;
 
 public class BasePage {
     protected WebDriver driver;
@@ -14,6 +15,14 @@ public class BasePage {
     public BasePage(WebDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver, Constants.WAIT_10, Constants.WAIT_120);
+    }
+
+    protected void wait(int seconds) {
+        try {
+            wait(seconds);
+        } catch (Exception e) {
+            Log.debug(e.getMessage());
+        }
     }
 
     protected void waitForElementToAppear(By element) {
@@ -43,5 +52,15 @@ public class BasePage {
     protected void assertEquals(By element, String expectedText) {
         waitForElementToAppear(element);
         Assert.assertEquals(readText(element), expectedText);
+    }
+
+    // Other Utilities
+
+    public String getTitle() {
+        return driver.getTitle();
+    }
+
+    public String getURL() {
+        return driver.getCurrentUrl();
     }
 }
