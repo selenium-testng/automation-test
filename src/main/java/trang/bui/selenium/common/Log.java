@@ -49,7 +49,17 @@ public class Log {
         logger.info(MyStringUtils.dash());
     }
 
+    public static void runStep(String message) {
+        getCallerClass();
+        logger.info("[Run step]: " + message);
+    }
+
     // Log level: ALL < DEBUG < INFO < WARN < ERROR < FATAL
+
+    public static void debug(String message) {
+        getCallerClass();
+        logger.debug(message);
+    }
 
     public static void info(String message) {
         getCallerClass();
