@@ -2,6 +2,7 @@ package trang.bui.selenium;
 
 import trang.bui.selenium.common.Constants;
 import trang.bui.selenium.common.Log;
+import trang.bui.selenium.common.TestUtils;
 
 public class DeveloperTesting {
     public static void main(String[] arg) {
@@ -12,6 +13,7 @@ public class DeveloperTesting {
         Log.info("Browser from config: " + Constants.BROWSER);
         Log.warn("This is a warning message");
         Log.error("This is an error message");
+        TestUtils.printTestData("googlesearch");
         Log.endTestCase();
     }
 }
