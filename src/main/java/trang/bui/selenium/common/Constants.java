@@ -23,4 +23,5 @@ public class Constants {
     // Resources name
     public static final String LOG4J_FILE = "log4j.xml";
     public static final String CONFIG_FILE = "application.properties";
+    public static final String TEST_DATA_FILE = "test_data.xlsx";
 }
