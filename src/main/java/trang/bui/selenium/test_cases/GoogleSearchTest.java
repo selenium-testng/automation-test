@@ -2,8 +2,10 @@ package trang.bui.selenium.test_cases;
 
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import trang.bui.selenium.common.Log;
+import trang.bui.selenium.common.TestUtils;
 import trang.bui.selenium.framework.BaseTest;
 import trang.bui.selenium.page_objects.GoogleSearchPage;
 
@@ -17,11 +19,16 @@ public class GoogleSearchTest extends BaseTest {
         googleSearchPage.launch();
     }
 
-    @Test
-    public void test(){
+    @DataProvider
+    public Object[][] readTestData() {
+        return TestUtils.readTestData("googlesearch");
+    }
+
+    @Test(dataProvider = "readTestData")
+    public void test(String run, String keywords){
         Log.info("Run @Test");
         googleSearchPage
-                .setKeywords("selenium page objects model")
+                .setKeywords(String.valueOf(keywords))
                 .clickSearch();
     }
 
