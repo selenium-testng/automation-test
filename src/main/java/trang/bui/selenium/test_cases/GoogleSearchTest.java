@@ -14,18 +14,19 @@ public class GoogleSearchTest extends BaseTest {
     public void setup(){
         Log.info("Run @BeforeMethod");
         googleSearchPage = new GoogleSearchPage(driver);
+        googleSearchPage.launch();
     }
 
     @Test
     public void test(){
         Log.info("Run @Test");
-        googleSearchPage.goToGoogleSearchPage();
-        googleSearchPage.doSearch("selenium page objects model");
+        googleSearchPage
+                .setKeywords("selenium page objects model")
+                .clickSearch();
     }
 
     @AfterMethod
     public void teardown(){
         Log.info("Run @AfterMethod");
-        System.out.println("After Method");
     }
 }

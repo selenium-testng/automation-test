@@ -11,16 +11,23 @@ public class GoogleSearchPage extends BasePage {
     }
 
     String baseURL = "https://www.google.com/";
-    By searchInput = By.name("q");
-    By searchButton = By.name("btnK");
+    By txtKeywords = By.name("q");
+    By btnSearch = By.name("btnK");
 
-    public GoogleSearchPage goToGoogleSearchPage() {
+    // Launch
+    public GoogleSearchPage launch() {
         driver.get(baseURL);
         return this;
     }
 
-    public void doSearch(String text) {
-        writeText(searchInput, text);
-        click(searchButton);
+    // Getter & Setter
+    public GoogleSearchPage setKeywords(String value) {
+        writeText(txtKeywords, value);
+        return this;
+    }
+
+    public GoogleSearchPage clickSearch() {
+        click(btnSearch);
+        return this;
     }
 }
