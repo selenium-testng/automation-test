@@ -14,7 +14,7 @@ public class GoogleSearchTest extends BaseTest {
 
     @BeforeMethod
     public void setup(){
-        Log.info("Run @BeforeMethod");
+        Log.info("Start GoogleSearch page");
         googleSearchPage = new GoogleSearchPage(driver);
         googleSearchPage.launch();
     }
@@ -26,14 +26,14 @@ public class GoogleSearchTest extends BaseTest {
 
     @Test(dataProvider = "readTestData")
     public void test(String run, String keywords){
-        Log.info("Run @Test");
+        Log.info("Search with keywords: " + keywords);
         googleSearchPage
-                .setKeywords(String.valueOf(keywords))
+                .setKeywords(keywords)
                 .clickSearch();
     }
 
     @AfterMethod
     public void teardown(){
-        Log.info("Run @AfterMethod");
+        Log.info("End GoogleSearch page");
     }
 }
