@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import trang.bui.selenium.common.Log;
 import trang.bui.selenium.common.TestUtils;
 import trang.bui.selenium.framework.BaseTest;
+import trang.bui.selenium.page_objects.GoogleResultsPage;
 import trang.bui.selenium.page_objects.GoogleSearchPage;
 
 public class GoogleSearchTest extends BaseTest {
@@ -26,10 +27,21 @@ public class GoogleSearchTest extends BaseTest {
 
     @Test(dataProvider = "readTestData")
     public void test(String run, String keywords){
-        Log.info("Search with keywords: " + keywords);
-        googleSearchPage
-                .setKeywords(keywords)
-                .clickSearch();
+        if(Boolean.valueOf(run)) {
+            Log.info("Old URL: " + googleSearchPage.getURL());
+            Log.info("Old Title: " + googleSearchPage.getTitle());
+            Log.info("Search with keywords: " + keywords);
+            googleSearchPage
+                    .setKeywords(keywords)
+                    .clickSearch();
+            GoogleResultsPage resultsPage = new GoogleResultsPage(driver);
+            Log.info("New URL: " + resultsPage.getURL());
+            Log.info("New Title: " + resultsPage.getTitle());
+            Log.info("Keywords: " + resultsPage.getKeywords());
+            resultsPage.setKeywords("selenium example");
+            Log.info("- First result: " + resultsPage.getFirstResult());
+            Log.info("- Second result: " + resultsPage.getSecondResult());
+        }
     }
 
     @AfterMethod
